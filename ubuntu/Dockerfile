@@ -1,7 +1,5 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y netcat
-
 ARG uid
 ARG gid
 ARG user
@@ -14,5 +12,3 @@ WORKDIR /work
 RUN chown -R $user:$group /work
 
 USER $user
-
-ENTRYPOINT ["/bin/nc", "-k", "-l", "8888"]

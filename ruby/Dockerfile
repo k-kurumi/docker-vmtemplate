@@ -12,5 +12,3 @@ WORKDIR /work
 RUN chown -R $user:$group /work
 
 USER $user
-
-ENTRYPOINT ["/usr/local/bin/ruby", "-run", "-e", "httpd", ".", "-p", "8888"]

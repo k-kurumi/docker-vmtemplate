@@ -14,8 +14,5 @@ mkdir -p localwork
 docker build . -t r1 --build-arg uid=$(id -u) --build-arg gid=$(id -g) --build-arg user=$(id -u -n) --build-arg group=$(id -g -n)
 
 # マウントして起動
-docker run -v $(readlink -f localwork):/work --name aaa r1
-
-# 別プロンプトから入った後はVM風に使える
-docker exec -it aaa /bin/bash
+docker run -it --entrypoint=/bin/bash -v $(readlink -f localwork):/work r1
 ```
