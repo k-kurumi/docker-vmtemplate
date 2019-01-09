@@ -1,6 +1,8 @@
 version: '3'
 services:
-  elasticsearch:
+
+  es0:
+    container_name: es0
     build: .
     ports:
       - '9200:9200'
@@ -8,15 +10,42 @@ services:
     networks:
       - esnetwork
     volumes:
-      - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./data:/usr/share/elasticsearch/data
+      - ./config0/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data0:/usr/share/elasticsearch/data
+
+  es1:
+    container_name: es1
+    build: .
+    ports:
+      - '9201:9200'
+      - '9301:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./config1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data1:/usr/share/elasticsearch/data
+
+  es2:
+    container_name: es2
+    build: .
+    ports:
+      - '9202:9200'
+      - '9302:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./config2/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data2:/usr/share/elasticsearch/data
 
   kibana:
+    container_name: kibana
     image: kibana:6.5.4
     ports:
       - '5601:5601'
     networks:
       - esnetwork
+    volumes:
+      - ./kibana_config/kibana.yml:/usr/share/kibana/config/kibana.yml
 
 networks:
   esnetwork:
