@@ -1,8 +1,80 @@
 version: '3'
 services:
 
-  es0:
-    container_name: es0
+  es_data0:
+    container_name: es_data0
+    build: .
+    ports:
+      - '9220:9200'
+      - '9320:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./es_data0_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es_data0_data:/usr/share/elasticsearch/data
+
+  es_data1:
+    container_name: es_data1
+    build: .
+    ports:
+      - '9221:9200'
+      - '9321:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./es_data1_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es_data1_data:/usr/share/elasticsearch/data
+
+  es_data2:
+    container_name: es_data2
+    build: .
+    ports:
+      - '9222:9200'
+      - '9322:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./es_data2_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es_data2_data:/usr/share/elasticsearch/data
+
+  es_master0:
+    container_name: es_master0
+    build: .
+    ports:
+      - '9210:9200'
+      - '9310:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./es_master0_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es_master0_data:/usr/share/elasticsearch/data
+
+  es_master1:
+    container_name: es_master1
+    build: .
+    ports:
+      - '9211:9200'
+      - '9311:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./es_master1_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es_master1_data:/usr/share/elasticsearch/data
+
+  es_master2:
+    container_name: es_master2
+    build: .
+    ports:
+      - '9212:9200'
+      - '9312:9300'
+    networks:
+      - esnetwork
+    volumes:
+      - ./es_master2_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es_master2_data:/usr/share/elasticsearch/data
+
+  es_ingest0:
+    container_name: es_ingest0
     build: .
     ports:
       - '9200:9200'
@@ -10,32 +82,8 @@ services:
     networks:
       - esnetwork
     volumes:
-      - ./config0/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./data0:/usr/share/elasticsearch/data
-
-  es1:
-    container_name: es1
-    build: .
-    ports:
-      - '9201:9200'
-      - '9301:9300'
-    networks:
-      - esnetwork
-    volumes:
-      - ./config1/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./data1:/usr/share/elasticsearch/data
-
-  es2:
-    container_name: es2
-    build: .
-    ports:
-      - '9202:9200'
-      - '9302:9300'
-    networks:
-      - esnetwork
-    volumes:
-      - ./config2/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - ./data2:/usr/share/elasticsearch/data
+      - ./es_ingest0_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es_ingest0_data:/usr/share/elasticsearch/data
 
   kibana:
     container_name: kibana

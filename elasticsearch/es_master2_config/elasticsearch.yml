@@ -1,0 +1,19 @@
+cluster.name: "my-cluster"
+network.host: 0.0.0.0
+
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-node.html
+node.master: true
+node.data: false
+node.ingest: false
+cluster.remote.connect: false
+
+node.name: master2
+
+# https://www.elastic.co/jp/blog/how-to-configure-elasticsearch-cluster-better
+# masterだけで問題なさそう
+discovery.zen.ping.unicast.hosts: ['es_master0', 'es_master1', 'es_master2']
+
+# minimum_master_nodes need to be explicitly set when bound on a public IP
+# set to 1 to allow single node clusters
+# Details: https://github.com/elastic/elasticsearch/pull/17288
+discovery.zen.minimum_master_nodes: 3

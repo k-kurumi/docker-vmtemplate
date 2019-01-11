@@ -3,5 +3,5 @@
 
 server.name: kibana
 server.host: "0"
-elasticsearch.url: http://es0:9200
+elasticsearch.url: http://es_ingest0:9200
 xpack.monitoring.ui.container.elasticsearch.enabled: true
