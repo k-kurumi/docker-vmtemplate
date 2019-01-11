@@ -9,6 +9,8 @@ services:
       - '9320:9300'
     networks:
       - esnetwork
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ./es_data0_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es_data0_data:/usr/share/elasticsearch/data
@@ -21,6 +23,8 @@ services:
       - '9321:9300'
     networks:
       - esnetwork
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ./es_data1_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es_data1_data:/usr/share/elasticsearch/data
@@ -33,6 +37,8 @@ services:
       - '9322:9300'
     networks:
       - esnetwork
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ./es_data2_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es_data2_data:/usr/share/elasticsearch/data
@@ -45,6 +51,8 @@ services:
       - '9310:9300'
     networks:
       - esnetwork
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ./es_master0_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es_master0_data:/usr/share/elasticsearch/data
@@ -57,6 +65,8 @@ services:
       - '9311:9300'
     networks:
       - esnetwork
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ./es_master1_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es_master1_data:/usr/share/elasticsearch/data
@@ -69,6 +79,8 @@ services:
       - '9312:9300'
     networks:
       - esnetwork
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ./es_master2_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es_master2_data:/usr/share/elasticsearch/data
@@ -81,6 +93,8 @@ services:
       - '9300:9300'
     networks:
       - esnetwork
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - ./es_ingest0_config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./es_ingest0_data:/usr/share/elasticsearch/data
