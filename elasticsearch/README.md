@@ -54,3 +54,15 @@ $ curl 'http://localhost:9200/_cluster/health?pretty'
   "active_shards_percent_as_number" : 100.0
 }
 ```
+
+---
+
+## endpoint
+
+> elasticsearch-head
+
+http://localhost:9100/
+
+> kibana
+
+http://localhost:5601/
