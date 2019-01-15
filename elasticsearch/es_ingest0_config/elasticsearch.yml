@@ -17,3 +17,7 @@ discovery.zen.ping.unicast.hosts: ['es_master0', 'es_master1', 'es_master2']
 # set to 1 to allow single node clusters
 # Details: https://github.com/elastic/elasticsearch/pull/17288
 discovery.zen.minimum_master_nodes: 3
+
+# elasticsearch-head
+http.cors.enabled: true
+http.cors.allow-origin: "*"

@@ -109,5 +109,15 @@ services:
     volumes:
       - ./kibana_config/kibana.yml:/usr/share/kibana/config/kibana.yml
 
+  head:
+    container_name: head
+    build:
+      context: .
+      dockerfile: Dockerfile.elasticsearch_head
+    ports:
+      - '9100:9100'
+    networks:
+      - esnetwork
+
 networks:
   esnetwork:

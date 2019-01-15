@@ -1,0 +1,11 @@
+FROM alpine:3.8
+
+WORKDIR /work
+
+RUN apk update && apk add git nodejs npm bash
+
+RUN git clone git://github.com/mobz/elasticsearch-head.git
+WORKDIR /work/elasticsearch-head
+RUN npm install
+
+ENTRYPOINT ["npm", "run", "start"]
