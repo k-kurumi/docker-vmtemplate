@@ -10,6 +10,8 @@ services:
       - promnetwork
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    extra_hosts:
+      - "docker_host_ip:$DOCKER_HOST_IP"
 
 networks:
   promnetwork:
