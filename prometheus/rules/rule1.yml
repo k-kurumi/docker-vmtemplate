@@ -1,0 +1,37 @@
+groups:
+  - name: example
+    rules:
+      - alert: HighErrorRate
+        expr: job:request_latency_seconds:mean5m{job="myjob"} > 0.5
+        for: 10m
+        labels:
+          severity: page
+        annotations:
+          summary: High request latency
+
+      - alert: Load1Over
+        expr: node_load1 > 0.5
+        for: 3m
+        labels:
+          severity: page
+        annotations:
+          summary: Load1 over
+
+      - alert: VmDown
+        expr: up == 0
+        labels:
+          severity: page
+        annotations:
+          summary: vmdown
+
+# v1の書き方
+# ALERT Load1
+#   IF node_load1 > 5.0
+#   FOR 30m
+#   LABELS {
+#     service = "node_exporter",
+#     severity = "warning",
+#   }
+#   ANNOTATIONS {
+#     summary = "deployment: {{$labels.job}}, job: {{$labels.group}}, instance: {{$labels.instance}}, load1: {{$value}}",
+#   }
