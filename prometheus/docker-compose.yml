@@ -14,5 +14,13 @@ services:
     extra_hosts:
       - "docker_host_ip:$DOCKER_HOST_IP"
 
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:5.4.3
+    ports:
+      - '3000:3000'
+    networks:
+      - promnetwork
+
 networks:
   promnetwork:
