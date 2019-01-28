@@ -32,3 +32,15 @@ scrape_configs:
   - job_name: 'node_exporter'
     static_configs:
       - targets: ['docker_host_ip:9100']
+
+  # 書き方が特殊なので気をつける
+  # $ curl -s 'http://localhost:9172/probe?name=myecho' と同じことをする
+  # https://github.com/adhocteam/script_exporter/issues/7#issuecomment-371856236
+  - job_name: 'script-myecho'
+    scrape_interval: 60s
+    metrics_path: '/probe'
+    params:
+      name: ['myecho']
+    static_configs:
+      - targets:
+          - 'docker_host_ip:9172'
