@@ -1,0 +1,25 @@
+global:
+  resolve_timeout: 5m
+
+# 設定の参考情報
+# https://knowledge.sakura.ad.jp/11635/
+# https://www.robustperception.io/whats-the-difference-between-group_interval-group_wait-and-repeat_interval
+
+route:
+  group_by: ['alertname']
+  group_wait: 60s
+  group_interval: 300s
+  repeat_interval: 300s
+  receiver: 'web.hook'
+
+receivers:
+- name: 'web.hook'
+  webhook_configs:
+  - url: 'http://docker_host_ip:5001/'
+    send_resolved: true
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']

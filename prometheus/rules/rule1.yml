@@ -10,7 +10,7 @@ groups:
           summary: High request latency
 
       - alert: Load1Over
-        expr: node_load1 > 0.5
+        expr: node_load1 > 4
         for: 3m
         labels:
           severity: page
@@ -23,6 +23,17 @@ groups:
           severity: page
         annotations:
           summary: vmdown
+
+      - alert: MyechoFailed
+        expr: script_success{instance="docker_host_ip:9172",job="script-myecho",script="myecho"} == 0
+        labels:
+          severity: page
+        annotations:
+          summary: myecho failed
+
+
+# script_success{instance="docker_host_ip:9172",job="script-myecho",script="myecho"}
+
 
 # v1の書き方
 # ALERT Load1
