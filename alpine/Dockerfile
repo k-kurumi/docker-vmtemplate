@@ -11,7 +11,7 @@ RUN adduser $user -u $uid -G $group -D
 WORKDIR /work
 RUN chown -R $user:$group /work
 
-RUN apk update && apk add sudo
+RUN apk update && apk add sudo bash wget curl
 RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER $user
