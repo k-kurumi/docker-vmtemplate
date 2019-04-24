@@ -4,7 +4,7 @@ GID   := $(shell id -g)
 GROUP := $(shell id -g -n)
 
 LOCALWORK := $(shell readlink -f localwork)
-IMAGE     := u1804
+IMAGE     := a39
 TAG       := $(shell date --iso-8601=d)
 
 IMAGE_TAG := $(IMAGE):$(TAG)
