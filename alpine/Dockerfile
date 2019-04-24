@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.9
 
 ARG uid
 ARG gid
@@ -8,8 +8,8 @@ ARG group
 RUN addgroup -g $gid $group
 RUN adduser $user -u $uid -G $group -D
 
-WORKDIR /work
-RUN chown -R $user:$group /work
+WORKDIR /home/$user
+RUN chown -R $user:$group /home/$user
 
 RUN apk update && apk add sudo bash wget curl
 RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers

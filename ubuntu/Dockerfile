@@ -6,10 +6,10 @@ ARG user
 ARG group
 
 RUN groupadd -g $gid $group
-RUN useradd $user -u $uid -g $gid
+RUN useradd $user -u $uid -g $gid --home-dir /home/$user
 
-WORKDIR /work
-RUN chown -R $user:$group /work
+WORKDIR /home/$user
+RUN chown -R $user:$group /home/$user
 
 RUN apt-get update && apt-get install -y sudo
 RUN echo "$user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
