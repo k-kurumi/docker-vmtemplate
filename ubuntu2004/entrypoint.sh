@@ -20,8 +20,6 @@ fi
 sudo chmod u-s /usr/sbin/useradd
 sudo chmod u-s /usr/sbin/groupadd
 
-# gpg実行時に必要なフォルダを作る
-sudo mkdir -p "${HOME}/.gnupg"
 sudo chown -R "${USER_ID}":"${GROUP_ID}" "${HOME}"
 
 exec "$@"
